@@ -81,4 +81,8 @@ body{
 .future-forecast .weather-forecast{
     display:flex;
 }
+.future-forecast .weather-forecast .w-icon{
+    width: 90px;
+    height: 90px;
+}
 
