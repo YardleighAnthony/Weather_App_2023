@@ -5,6 +5,23 @@ const timezone = document.getElementById('time-zone');
 const weatherForecastEl = document.getElementById('weather-forecast');
 const currentTempEl = document.getElementById('current-temp');
 
+
+//Array of days
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+//Array of months
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+//API key
+const API_KEY = 'af47796a60152587afcffc79fd270f8d';
+
+//API Url
+const API_URL = 'https://api.openweathermap.org/data/2.5/weather?&units=metric&q=';
+
+//Search input
+const searchInput = document.getElementById('search-input');
+const searchBtn = document.getElementById('search-button');
+
 //Call function every one second
 setInterval(() => {
     const time = new Date();
@@ -17,4 +34,45 @@ setInterval(() => {
     const ampm = hour >= 12 ? 'PM' : 'AM';
 
     timeElement.innerHTML = TwelveHourFormat + ':' + minutes + ' ' + `<span id="am-pm">${ampm}</span>`;
+
+    dateElement.innerHTML = days[day] + ', ' + months[month] + ' ' + date;
 }, 1000);
+
+
+// Add event listener to the button
+searchBtn.addEventListener("click", () => {
+    getWeatherData(searchInput.value); 
+});
+
+async function getWeatherData(city) {
+
+    const response = await fetch(API_URL + city + `&appid=${API_KEY}`);
+    const data = await response.json();
+
+    console.log(data);
+
+    //Select all elements and update the data
+    document.querySelector(".time-zone").innerHTML = data.name;
+    document.querySelector(".temperature").innerHTML = Math.round(data.main.temp) + "°C";
+    document.querySelector(".time-zone").innerHTML = data.name;
+    document.querySelector(".Humidity").innerHTML = data.main.humidity + "%";
+    document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
+    document.querySelector(".pressure").innerHTML = data.main.pressure + " Pa";
+
+
+   /* navigator.geolocation.getCurrentPosition((success) => {
+
+        let { latitude, longitude } = success.coords;
+
+        fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&appid=${API_KEY}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            }) 
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+            });
+    }, (error) => {
+        console.error('Error getting geolocation:', error);
+    });*/
+}
