@@ -103,6 +103,18 @@ function formatTime(unixTimestamp) {
     return `${formattedHours}:${formattedMinutes} ${ampm}`;
   }
 
+weatherForcast();
+
+function weatherForcast(){
+    navigator.geolocation.getCurrentPosition((success) =>{
+        let{latitude,longitude} = success.coords;
+
+        fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&appid=${API_KEY}`)
+        .then(response => response.json()).then(data => {
+            console.log(data);
+        })
+    })
+}
     
 
    /* navigator.geolocation.getCurrentPosition((success) => {
