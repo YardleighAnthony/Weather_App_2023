@@ -70,6 +70,7 @@ body{
     border-radius: 10px;
     margin: 10px 0;
     margin-top: 50px;
+    width: 250px;
 }
 .current-info .details .weather-item{
     display: flex;
@@ -261,5 +262,13 @@ body{
         margin-left:-70px;
     }
 
+}
+
+@media only screen and (max-width: 1000px){
+    .future-forecast{
+        justify-content: start;
+        align-items: none;
+        overflow-y: scroll;
+    }
 }
 

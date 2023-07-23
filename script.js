@@ -22,6 +22,9 @@ const API_URL = 'https://api.openweathermap.org/data/2.5/weather?&units=metric&q
 const searchInput = document.getElementById('search-input');
 const searchBtn = document.getElementById('search-button');
 
+//Weather icon variable
+const weatherIcon = document.getElementById('icon');
+
 //Call function every one second
 setInterval(() => {
     const time = new Date();
@@ -39,10 +42,8 @@ setInterval(() => {
 }, 1000);
 
 
-// Add event listener to the button
-searchBtn.addEventListener("click", () => {
-    getWeatherData(searchInput.value); 
-});
+
+
 
 async function getWeatherData(city) {
 
@@ -58,7 +59,51 @@ async function getWeatherData(city) {
     document.querySelector(".Humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
     document.querySelector(".pressure").innerHTML = data.main.pressure + " Pa";
+    document.querySelector(".sunrise").innerHTML = formatTime(data.sys.sunrise);
+    document.querySelector(".sunset").innerHTML = formatTime(data.sys.sunset);
 
+    if(data.weather[0].main == "Clouds"){
+        weatherIcon.src = "images/clouds.png";
+    }
+    else if(data.weather[0].main == "Clear") {
+        weatherIcon.src = "images/clear.png";
+    }
+    else if(data.weather[0].main == "Rain"){
+        weatherIcon.src = "images/rain.png";
+    }
+    else if(data.weather[0].main == "Drizzle"){
+        weatherIcon.src = "images/drizzle.png";
+    }
+    else if(data.weather[0].main == "Rain"){
+        weatherIcon.src = "images/rain.png";
+    }
+    else if(data.weather[0].main == "]Mist"){
+        weatherIcon.src = "images/mist.png";
+    }
+    else if(data.weather[0].main == "Snow"){
+        weatherIcon.src = "images/snow.png";
+    }
+
+}
+// Add event listener to the button
+searchBtn.addEventListener("click", () => {
+    getWeatherData(searchInput.value); 
+});
+
+//Formatting the time for sunset and sunrise
+function formatTime(unixTimestamp) {
+    const date = new Date(unixTimestamp * 1000);
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+  
+    const formattedHours = (hours % 12).toString().padStart(2, '0');
+    const formattedMinutes = minutes.toString().padStart(2, '0');
+  
+    return `${formattedHours}:${formattedMinutes} ${ampm}`;
+  }
+
+    
 
    /* navigator.geolocation.getCurrentPosition((success) => {
 
@@ -75,4 +120,4 @@ async function getWeatherData(city) {
     }, (error) => {
         console.error('Error getting geolocation:', error);
     });*/
-}
+
