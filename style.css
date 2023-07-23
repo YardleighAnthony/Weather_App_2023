@@ -42,7 +42,7 @@ body{
     font-size: 70px;
 
 }
-.container-date .am-pm{
+.container-date #am-pm{
     font-size: 30px;
     margin-left:10px;
 }
@@ -198,14 +198,14 @@ body{
     display: flex;
     margin-left: 120px;
 }
-.time #tempi{
-    font-size:70px;
-    font-weight:100;
+#tempi{
+    font-size:xx-large;
+    font-weight:bold;
     line-height: 1;
 
 }
 .temperature span{
-    font-size:40px;
+    font-size:30px;
     margin-top:-10px;
     display:block;
 }
