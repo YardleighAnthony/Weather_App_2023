@@ -240,7 +240,7 @@ form{
     display:block;
 }
 
-@media only screen and (max-width:730px){
+/*@media only screen and (max-width:730px){
 
     .main-wrapper{
         padding: 20px;
@@ -300,4 +300,4 @@ form{
         overflow-y: scroll;
     }
 }
-
+*/
