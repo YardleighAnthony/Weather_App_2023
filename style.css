@@ -29,11 +29,20 @@ body{
     height: 100vh;
     padding: 20px 70px;
 }
+.block{
+    height: 650px;
+    width: 55%;
+    background: rgba(226, 226, 226, 0.6);;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 10px 10px 10px 10px;
+}
 
 .current-info{
-    display:flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    margin-top: 300px;
+    margin-left: 230px;
+    color: black;
 }
 .container-date{
     font-weight:100px;
@@ -49,9 +58,15 @@ body{
 .container-date .date{
     font-size: 30px;
 }
-
+.clock{
+    text-align: left;
+    margin-top: 20px;
+}
+form{
+    padding: none;
+}
 .scroll-container{
-    text-align: end;
+    text-align: center;
 }
 .scroll-container .time-zone{
     font-size:30px;
@@ -63,14 +78,13 @@ body{
     font-weight: 700;
 }
 .current-info .details{
-    display: flex;
-    flex-direction: column;
-    background: rgba(226, 226, 226, 0.6);
+    margin-top: 100px;
     padding:20px;
     border-radius: 10px;
     margin: 10px 0;
     margin-top: 50px;
     width: 250px;
+    color:black;
 }
 .current-info .details .weather-item{
     display: flex;
@@ -155,7 +169,9 @@ body{
 
 }
 .search input{
-    width:100%;
+    margin-top: -80px;
+    margin-left:420px;
+    width:40%;
     height:40px;
     border: 1px solid #ced4da;
     border-top-left-radius: 5px;
@@ -171,16 +187,22 @@ body{
 
 }
 .search button{
+    margin-top: -80px;
+    margin-right:20px;
     min-width: 40px;
     height:40px;
     border: none;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color:var(--primary-clr);
     font-size:14px;
     color:#fff;
     cursor: pointer;
 
+}
+.search button img{
+    width: 50%;
+    height: 60%;
 }
 .weather-icon{
     width:100%;
@@ -191,13 +213,20 @@ body{
 
 }
 .weather-icon #icon{
-    width: 80%;
+    width: 30%;
     object-fit: cover;
 
 }
 .temperature{
     display: flex;
-    margin-left: 120px;
+    margin-left: 315px;
+    font-weight: bold;
+    font-size: xx-large;
+    color: black;
+}
+
+.temp-unit{
+    margin-left: -315px;
 }
 #tempi{
     font-size:xx-large;
